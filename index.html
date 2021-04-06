@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      background: lightskyblue;
+
+    }
+
+    .calculator {
+      width: 94%;
+      margin: 20px 3%;
+      /* width: 300px;
+      height: 430px; */
+    }
+
+    .screen {
+      width: 100%;
+      color: white;
+      height: 100px;
+      padding: 5px;
+      background-color: black;
+      border: none;
+      font-size: 40px;
+    }
+
+    .calc {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      width: 100%;
+      height: 300px;
+      background: white;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      height: 25%;
+    }
+
+    .row-1 {
+      display: flex;
+      flex-wrap: wrap;
+      height: 25%;
+      width: 100%;
+    }
+
+    .row-1 .Btn-num {
+      width: 20%;
+    }
+
+    .row-1 #Btn-sign {
+      width: 60%;
+      background: hsla(20, 90%, 40%, 0.8)
+    }
+
+    button {
+      width: 20%;
+      font-size: 27px;
+      font-family: 'Courier New', Courier, monospace;
+      color: black;
+      cursor: pointer;
+      background: white;
+      border: 1px solid black;
+    }
+
+    .Btn-number:hover {
+
+      background-color: black;
+      color: white;
+    }
+
+    .Btn-sign:hover {
+      background-color: darkblue;
+      color: white;
+    }
+
+    @media only screen and (min-width: 600px) {
+      .calculator {
+        width: 80%;
+        margin: 20px 10%;
+      }
+    }
+
+    @media only screen and (min-width: 776px) {
+      .calculator {
+        width: 70%;
+        margin: 20px 15%;
+      }
+    }
+
+    @media only screen and (min-width: 992px) {
+      .calculator {
+        width: 60%;
+        margin: 20px 20%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calculator">
+    <input type='text' class='screen'>
+    <div class="calc">
+      <div class="row">
+        <button type="button" class="Btn-num" onclick='Btn(7)'>7</button>
+        <button type="button" class="Btn-num" onclick='Btn(8)'>8</button>
+        <button type="button" class="Btn-num" onclick='Btn(9)'>9</button>
+        <button type="button" class="Btn-sign" onclick='deleteBtn()'>DEL</button>
+        <button type="button" class="Btn-sign" onclick='spaceBtn()'>AC</button>
+      </div>
+      <div class="row">
+        <button type="button" class="Btn-num" onclick='Btn(4)'>4</button>
+        <button type="button" class="Btn-num" onclick='Btn(5)'>5</button>
+        <button type="button" class="Btn-num" onclick='Btn(6)'>6</button>
+        <button type="button" class="Btn-sign" onclick='Btn("*")'>X</button>
+        <button type="button" class="Btn-sign" onclick='Btn("/")'>/</button>
+      </div>
+      <div class="row">
+        <button type="button" class="Btn-num" onclick='Btn(1)'>1</button>
+        <button type="button" class="Btn-num" onclick='Btn(2)'>2</button>
+        <button type="button" class="Btn-num" onclick='Btn(3)'>3</button>
+        <button type="button" class="Btn-sign" onclick='Btn("+")'>+</button>
+        <button type="button" class="Btn-sign" onclick='Btn("-")'>-</button>
+      </div>
+      <div class="row-1">
+        <button type="button" class="Btn-num" onclick='Btn(0)'>0</button>
+        <button type="button" class="Btn-num" onclick='Btn(".")'>.</button>
+        <button type="button" id="Btn-sign" onclick='equalBtn()'>=</button>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    const screen = document.querySelector('.screen');
+
+    function Btn(n) {
+      screen.value += n;
+    }
+
+    function spaceBtn() {
+      screen.value = '';
+    }
+
+    function equalBtn() {
+      let answer = eval(screen.value);
+      screen.value = answer;
+    }
+    function deleteBtn() {
+      let del = screen.value.substring(0, screen.value.length - 1);
+      screen.value = del;
+    }
+
+  </script>
+</body>
+
+</html>
